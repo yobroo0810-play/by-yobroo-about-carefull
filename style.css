@@ -1,0 +1,1301 @@
+
+/* =====================================
+   1. RESET & VARIABLES
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #191329;
+    --purple: #a78bfa;
+    --pink: #f0abfc;
+    --light-pink: #fbcfe8;
+    --white: #ffffff;
+    --muted: #d8cce9;
+    --glass: rgba(255,255,255,0.08);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: var(--white);
+
+    background:
+        radial-gradient(circle at 10% 15%, #50366f, transparent 35%),
+        radial-gradient(circle at 90% 85%, #593b78, transparent 35%),
+        linear-gradient(135deg, #171329, #28203e, #352449);
+}
+
+
+/* =====================================
+   2. BACKGROUND DECORATION
+===================================== */
+
+.ambient {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.ambient-star {
+    position: absolute;
+    color: #ffffff;
+    opacity: 0.15;
+    font-size: 40px;
+    animation: ambientFloat 7s ease-in-out infinite;
+}
+
+.ambient-star:nth-child(1) {
+    top: 10%;
+    left: 8%;
+}
+
+.ambient-star:nth-child(2) {
+    top: 20%;
+    right: 10%;
+    animation-delay: 1s;
+    font-size: 60px;
+}
+
+.ambient-star:nth-child(3) {
+    bottom: 15%;
+    left: 12%;
+    animation-delay: 2s;
+    font-size: 55px;
+}
+
+.ambient-star:nth-child(4) {
+    bottom: 20%;
+    right: 12%;
+    animation-delay: 3s;
+}
+
+.ambient-star:nth-child(5) {
+    top: 50%;
+    left: 45%;
+    animation-delay: 1.5s;
+}
+
+.ambient-star:nth-child(6) {
+    top: 70%;
+    right: 30%;
+    animation-delay: 2.5s;
+}
+
+@keyframes ambientFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(20deg);
+    }
+}
+
+
+/* =====================================
+   3. TOP BAR
+===================================== */
+
+.top-bar {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 600px;
+    margin: 5px auto 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.brand {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #e9c9ff;
+}
+
+.brand span {
+    color: #ffb6df;
+    margin-right: 5px;
+}
+
+.progress-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.progress-track {
+    height: 6px;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.13);
+}
+
+#progressBar {
+    width: 9.09%;
+    height: 100%;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #a78bfa, #f0abfc);
+    transition: width 0.6s ease;
+}
+
+#stepNumber {
+    min-width: 55px;
+    font-size: 10px;
+    color: #e6d4ff;
+    text-align: right;
+    letter-spacing: 1px;
+}
+
+
+/* =====================================
+   4. MAIN CONTAINER & PAGE
+===================================== */
+
+.main-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 600px;
+    min-height: 620px;
+    margin: 0 auto;
+}
+
+.page {
+    display: none;
+    width: 100%;
+    padding: 38px 30px;
+    text-align: center;
+
+    border: 1px solid rgba(255,255,255,0.17);
+    border-radius: 28px;
+
+    background: rgba(255,255,255,0.075);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+}
+
+.page.active {
+    display: block;
+    animation: pageEnter 0.65s ease both;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =====================================
+   5. TEXT & HEADINGS
+===================================== */
+
+h1 {
+    font-size: clamp(36px, 8vw, 55px);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: clamp(23px, 5vw, 30px);
+    margin-bottom: 15px;
+    line-height: 1.35;
+}
+
+.gradient-text {
+    background: linear-gradient(
+        90deg,
+        #ffc2e8,
+        #c4a6ff,
+        #ffe0f3
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.eyebrow {
+    display: block;
+    margin-bottom: 18px;
+    color: #edb6ff;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.description {
+    max-width: 440px;
+    margin: 0 auto 25px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.big-icon {
+    font-size: 58px;
+    margin-bottom: 18px;
+    animation: iconBounce 2.5s ease-in-out infinite;
+}
+
+.floating {
+    animation: iconBounce 2.5s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+.tiny-text {
+    color: #bcaed0;
+    font-size: 11px;
+    margin-top: 22px;
+}
+
+.hero-decoration {
+    color: #eab5ff;
+    font-size: 27px;
+    animation: rotateStar 6s linear infinite;
+}
+
+@keyframes rotateStar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =====================================
+   6. INFORMATION CARD
+===================================== */
+
+.info-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px;
+    margin: 25px 0;
+
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.07);
+
+    text-align: left;
+}
+
+.info-card span {
+    font-size: 28px;
+}
+
+.info-card p {
+    color: #e4d6ef;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+
+/* =====================================
+   7. PRIMARY & SECONDARY BUTTON
+===================================== */
+
+.primary-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+    max-width: 290px;
+    min-height: 50px;
+
+    margin-top: 22px;
+    padding: 14px 23px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: linear-gradient(135deg, #f0b1ef, #a78bfa);
+
+    color: #271738;
+    font-weight: 800;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s,
+        opacity 0.3s;
+}
+
+.primary-btn:hover:not(:disabled) {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(210,150,255,0.3);
+}
+
+.primary-btn:active:not(:disabled) {
+    transform: scale(0.96);
+}
+
+.primary-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.secondary-btn,
+.small-btn {
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.secondary-btn:hover,
+.small-btn:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-3px);
+}
+
+
+/* =====================================
+   8. NAME INPUT
+===================================== */
+
+.input-wrapper {
+    margin: 30px 0 10px;
+    text-align: left;
+}
+
+.input-wrapper label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: #edbbff;
+    letter-spacing: 2px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 14px;
+    outline: none;
+
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.input-wrapper input::placeholder {
+    color: #afa1c0;
+}
+
+.input-wrapper input:focus {
+    border-color: #e7aaff;
+    box-shadow: 0 0 0 4px rgba(215,151,255,0.1);
+}
+
+.feedback {
+    min-height: 27px;
+    margin: 15px 0;
+    color: #e9bdff;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =====================================
+   9. MOOD SELECTION
+===================================== */
+
+.mood-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.choice-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 10px;
+
+    border-radius: 17px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.055);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.choice-card span {
+    font-size: 33px;
+}
+
+.choice-card strong {
+    font-size: 13px;
+}
+
+.choice-card small {
+    color: #c7b5d8;
+    font-size: 10px;
+}
+
+.choice-card:hover,
+.choice-card.selected {
+    transform: translateY(-4px);
+    border-color: #e9adff;
+    background: rgba(193,139,255,0.17);
+    box-shadow: 0 8px 25px rgba(174,117,255,0.13);
+}
+
+
+/* =====================================
+   10. LUCKY CHARM
+===================================== */
+
+.charm-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+}
+
+.charm-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    padding: 23px 10px;
+
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 18px;
+
+    color: white;
+    background: rgba(255,255,255,0.06);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.charm-btn span {
+    font-size: 42px;
+}
+
+.charm-btn strong {
+    font-size: 11px;
+}
+
+.charm-btn:hover,
+.charm-btn.selected {
+    transform: scale(1.04);
+    border-color: #f0b2ff;
+    background: rgba(192,132,252,0.2);
+}
+
+
+/* =====================================
+   11. STAR GAME
+===================================== */
+
+.game-stats,
+.memory-info {
+    display: flex;
+    justify-content: space-around;
+    gap: 12px;
+    padding: 17px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 15px;
+    background: rgba(255,255,255,0.06);
+}
+
+.stat-box,
+.memory-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.stat-box small,
+.memory-info small {
+    color: #d5c1ea;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.stat-box strong,
+.memory-info strong {
+    font-size: 22px;
+    color: #f5c5ff;
+}
+
+.star-game-area {
+    position: relative;
+    width: 100%;
+    height: 290px;
+    overflow: hidden;
+
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+
+    background:
+        radial-gradient(circle at center, #4d376d, #251c40);
+}
+
+.game-intro {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.game-intro span {
+    font-size: 48px;
+}
+
+.game-intro p {
+    color: #e8d9ff;
+    font-size: 12px;
+}
+
+.star-target {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+
+    font-size: 34px;
+    cursor: pointer;
+
+    filter: drop-shadow(0 0 9px #ffe68a);
+
+    animation: starPop 0.35s ease both,
+               starGlow 1.2s infinite alternate;
+}
+
+@keyframes starPop {
+    from {
+        transform: scale(0) rotate(-80deg);
+    }
+
+    to {
+        transform: scale(1) rotate(0);
+    }
+}
+
+@keyframes starGlow {
+    to {
+        filter: drop-shadow(0 0 18px #ffe68a);
+    }
+}
+
+
+/* =====================================
+   12. MEMORY GAME
+===================================== */
+
+.memory-info {
+    margin-bottom: 18px;
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.memory-card {
+    height: 88px;
+    padding: 0;
+    border: none;
+    border-radius: 13px;
+    background: transparent;
+    perspective: 600px;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+    transition: transform 0.45s;
+}
+
+.memory-card.flipped .card-inner,
+.memory-card.matched .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.card-front {
+    background: linear-gradient(135deg, #8065b7, #493b78);
+    color: #f6d6ff;
+    font-size: 25px;
+    border: 1px solid rgba(255,255,255,0.18);
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background: #f6dbff;
+    color: #5d3a7c;
+    font-size: 32px;
+}
+
+.memory-card.matched .card-back {
+    background: #c9f7df;
+}
+
+
+/* =====================================
+   13. QUIZ
+===================================== */
+
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 15px;
+
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.06);
+    color: white;
+    text-align: left;
+    font-size: 12px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.quiz-option span {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+    background: rgba(255,255,255,0.13);
+    font-weight: bold;
+}
+
+.quiz-option:hover {
+    transform: translateX(5px);
+    background: rgba(255,255,255,0.15);
+}
+
+.quiz-option.correct {
+    border-color: #75e7a8;
+    background: rgba(75,201,133,0.18);
+}
+
+.quiz-option.wrong {
+    border-color: #ff879a;
+    background: rgba(255,90,110,0.18);
+}
+
+.quiz-option:disabled {
+    cursor: default;
+}
+
+
+/* =====================================
+   14. MYSTERY GIFTS
+===================================== */
+
+.gift-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 30px 0 20px;
+}
+
+.gift-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 20px 5px;
+
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.15);
+
+    background: rgba(255,255,255,0.07);
+    color: white;
+    cursor: pointer;
+    transition: 0.35s;
+}
+
+.gift-box span {
+    font-size: 39px;
+}
+
+.gift-box small {
+    color: #dfc3ff;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.gift-box:hover:not(.opened) {
+    transform: translateY(-8px) rotate(-3deg);
+}
+
+.gift-box.opened {
+    background: rgba(186,255,214,0.14);
+    border-color: #9be8bc;
+    opacity: 0.8;
+}
+
+.gift-box.opened span {
+    animation: giftPop 0.4s ease;
+}
+
+@keyframes giftPop {
+    50% {
+        transform: scale(1.35) rotate(15deg);
+    }
+}
+
+.gift-message {
+    min-height: 60px;
+    padding: 15px;
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+    background: rgba(255,255,255,0.07);
+
+    color: #f4d8ff;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+
+/* =====================================
+   15. ENVELOPE ANIMATION
+===================================== */
+
+.envelope-area {
+    height: 230px;
+    display: grid;
+    place-items: center;
+    perspective: 900px;
+}
+
+.envelope {
+    position: relative;
+    width: 195px;
+    height: 130px;
+    cursor: pointer;
+    transition: transform 0.4s;
+}
+
+.envelope:hover {
+    transform: translateY(-7px);
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 7px;
+    background: #c894ed;
+}
+
+.letter-paper {
+    position: absolute;
+    z-index: 1;
+    left: 10%;
+    bottom: 4px;
+    width: 80%;
+    height: 90%;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 5px;
+    background: #fff2ff;
+    color: #8650a2;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    transition: transform 0.8s;
+}
+
+.envelope-front {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+
+    border-radius: 6px;
+    background: #b982e1;
+
+    clip-path: polygon(
+        0 0, 50% 60%, 100% 0,
+        100% 100%, 0 100%
+    );
+}
+
+.envelope-flap {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+
+    background: #e0b0fa;
+    clip-path: polygon(0 0, 100% 0, 50% 65%);
+
+    transform-origin: top;
+    transition: transform 0.7s;
+}
+
+.envelope-seal {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    font-size: 27px;
+    color: white;
+}
+
+.envelope.opened .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.opened .letter-paper {
+    transform: translateY(-85px);
+}
+
+
+/* =====================================
+   16. SPECIAL MESSAGE
+===================================== */
+
+.message-card {
+    position: relative;
+    padding: 30px 22px;
+
+    text-align: left;
+
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.075);
+}
+
+.message-decoration {
+    text-align: right;
+    font-size: 25px;
+    color: #f3bbff;
+}
+
+#specialMessage {
+    min-height: 210px;
+    font-size: 14px;
+    line-height: 2.1;
+    color: #fff7ff;
+    white-space: pre-line;
+}
+
+.message-signature {
+    display: block;
+    margin-top: 20px;
+    padding-top: 15px;
+
+    border-top: 1px solid rgba(255,255,255,0.14);
+
+    color: #eab6ff;
+    text-align: right;
+    font-size: 11px;
+}
+
+
+/* =====================================
+   17. HEART GARDEN
+===================================== */
+
+.heart-page {
+    overflow: hidden;
+}
+
+.heart-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 11px 18px;
+    margin-bottom: 18px;
+
+    border: 1px solid rgba(255,255,255,0.17);
+    border-radius: 50px;
+    background: rgba(255,255,255,0.08);
+
+    color: #f7d7ff;
+    font-size: 12px;
+}
+
+.heart-counter span {
+    font-size: 18px;
+}
+
+.heart-counter strong {
+    color: #ffbde6;
+    font-size: 17px;
+}
+
+/* Area tempat hati bergerak */
+
+.heart-garden {
+    position: relative;
+    width: 100%;
+    height: 350px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 22px;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(207,144,255,0.16),
+            transparent 65%),
+        rgba(24,17,46,0.55);
+}
+
+/* Hati utama yang dapat diklik */
+
+.heart-token {
+    position: absolute;
+    z-index: 3;
+
+    display: grid;
+    place-items: center;
+
+    width: 47px;
+    height: 47px;
+
+    border: none;
+    background: transparent;
+
+    font-size: 31px;
+    cursor: pointer;
+
+    filter: drop-shadow(0 0 8px rgba(255,130,200,0.6));
+
+    transition:
+        left 0.65s cubic-bezier(.2,.8,.2,1),
+        top 0.65s cubic-bezier(.2,.8,.2,1),
+        transform 0.3s;
+}
+
+.heart-token:hover {
+    transform: scale(1.25);
+}
+
+.heart-token.pop {
+    animation: heartPop 0.45s ease;
+}
+
+@keyframes heartPop {
+    0% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.7) rotate(-15deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Teks tengah taman */
+
+.garden-center {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.garden-center span {
+    color: #ffc7e9;
+    font-size: 55px;
+    animation: centerPulse 2s infinite;
+}
+
+.garden-center small {
+    color: #f4d4ff;
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+@keyframes centerPulse {
+    50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+/* Partikel hati kecil */
+
+.heart-particle {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+
+    font-size: 18px;
+
+    animation: particleFly 1.2s ease-out forwards;
+}
+
+@keyframes particleFly {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(var(--move-x), -100px)
+            scale(1.3)
+            rotate(30deg);
+    }
+}
+
+/* Progress pengumpulan hati */
+
+.heart-progress {
+    width: 100%;
+    height: 7px;
+    margin-top: 15px;
+
+    overflow: hidden;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.15);
+}
+
+#heartProgressBar {
+    width: 0%;
+    height: 100%;
+
+    border-radius: 30px;
+    background: linear-gradient(90deg, #f7a8d7, #c5a4ff);
+
+    transition: width 0.4s;
+}
+
+.final-buttons {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.footer-note {
+    margin-top: 25px;
+    font-size: 11px;
+    color: #c4acd9;
+}
+
+
+/* =====================================
+   18. SOUND BUTTON
+===================================== */
+
+.sound-toggle {
+    position: fixed;
+    z-index: 10;
+    right: 18px;
+    bottom: 18px;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.25);
+
+    color: white;
+    background: rgba(255,255,255,0.13);
+    backdrop-filter: blur(10px);
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sound-toggle:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+
+/* =====================================
+   19. CONFETTI
+===================================== */
+
+.confetti {
+    position: fixed;
+    z-index: 30;
+    top: -30px;
+    pointer-events: none;
+
+    animation: confettiFall 3.5s linear forwards;
+}
+
+@keyframes confettiFall {
+    100% {
+        transform: translateY(110vh) rotate(700deg);
+        opacity: 0;
+    }
+}
+
+
+/* =====================================
+   20. RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .top-bar {
+        margin-bottom: 20px;
+    }
+
+    .page {
+        padding: 28px 18px;
+        border-radius: 22px;
+    }
+
+    .main-container {
+        min-height: 550px;
+    }
+
+    .star-game-area {
+        height: 260px;
+    }
+
+    .memory-card {
+        height: 72px;
+    }
+
+    .card-back {
+        font-size: 25px;
+    }
+
+    .heart-garden {
+        height: 310px;
+    }
+
+    .heart-token {
+        width: 40px;
+        height: 40px;
+        font-size: 27px;
+    }
+
+    .sound-toggle {
+        width: 40px;
+        height: 40px;
+        right: 12px;
+        bottom: 12px;
+    }
+
+}
+
+
+/* =====================================
+   21. REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+}

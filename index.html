@@ -1,0 +1,618 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#211832">
+
+    <title>A Little Surprise For You</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND DECORATION -->
+    <div class="ambient">
+        <span class="ambient-star">✦</span>
+        <span class="ambient-star">✧</span>
+        <span class="ambient-star">♡</span>
+        <span class="ambient-star">✦</span>
+        <span class="ambient-star">✧</span>
+        <span class="ambient-star">♡</span>
+    </div>
+
+    <!-- TOP NAVIGATION -->
+    <header class="top-bar">
+
+        <div class="brand">
+            <span>✦</span>
+            LITTLE JOURNEY
+        </div>
+
+        <div class="progress-info">
+            <div class="progress-track">
+                <div id="progressBar"></div>
+            </div>
+
+            <span id="stepNumber">01 / 11</span>
+        </div>
+
+    </header>
+
+
+    <main class="main-container">
+
+        <!-- =========================
+             STEP 1: WELCOME
+        ========================== -->
+
+        <section class="page active" id="step1">
+
+            <div class="hero-decoration">✧</div>
+
+            <div class="big-icon floating">💌</div>
+
+            <span class="eyebrow">A SPECIAL EXPERIENCE FOR YOU</span>
+
+            <h1>
+                Hey there,<br>
+                <span class="gradient-text">beautiful soul!</span>
+            </h1>
+
+            <p class="description">
+                Ada sesuatu yang ingin kami sampaikan.
+                Namun sebelum itu, kamu harus melewati
+                sebuah perjalanan kecil.
+            </p>
+
+            <div class="info-card">
+                <span>🌷</span>
+                <p>
+                    A little game, a little surprise,
+                    and a special message waiting for you.
+                </p>
+            </div>
+
+            <button class="primary-btn" id="startBtn">
+                Start The Journey <span>→</span>
+            </button>
+
+            <p class="tiny-text">No rush. Just enjoy every little moment.</p>
+
+        </section>
+
+
+        <!-- =========================
+             STEP 2: PERSONALIZATION
+        ========================== -->
+
+        <section class="page" id="step2">
+
+            <div class="big-icon">👋</div>
+
+            <span class="eyebrow">LET'S GET TO KNOW YOU</span>
+
+            <h2>What should we call you?</h2>
+
+            <p class="description">
+                Sebelum melanjutkan, masukkan nama
+                yang ingin ditampilkan dalam pesan nanti.
+            </p>
+
+            <div class="input-wrapper">
+
+                <label for="nameInput">YOUR NAME</label>
+
+                <input
+                    type="text"
+                    id="nameInput"
+                    maxlength="24"
+                    placeholder="Type your name here..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+            <p id="nameError" class="feedback"></p>
+
+            <button class="primary-btn" id="nameNextBtn">
+                That's Me! ✨
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             STEP 3: MOOD SELECTION
+        ========================== -->
+
+        <section class="page" id="step3">
+
+            <div class="big-icon">🌷</div>
+
+            <span class="eyebrow">A LITTLE CHECK-IN</span>
+
+            <h2>How are you feeling today?</h2>
+
+            <p class="description">
+                Tidak ada jawaban yang salah.
+                Pilih suasana hati yang paling menggambarkan dirimu.
+            </p>
+
+            <div class="mood-grid">
+
+                <button class="choice-card mood-btn"
+                    data-mood="happy">
+
+                    <span>😆</span>
+                    <strong>Happy</strong>
+                    <small>Feeling great!</small>
+
+                </button>
+
+                <button class="choice-card mood-btn"
+                    data-mood="normal">
+
+                    <span>🙂</span>
+                    <strong>Just Fine</strong>
+                    <small>Quite alright.</small>
+
+                </button>
+
+                <button class="choice-card mood-btn"
+                    data-mood="tired">
+
+                    <span>🥱</span>
+                    <strong>Tired</strong>
+                    <small>Need some rest.</small>
+
+                </button>
+
+                <button class="choice-card mood-btn"
+                    data-mood="sad">
+
+                    <span>🥺</span>
+                    <strong>Not Okay</strong>
+                    <small>Having a hard day.</small>
+
+                </button>
+
+            </div>
+
+            <p id="moodResponse" class="feedback"></p>
+
+            <button class="primary-btn" id="moodNextBtn" disabled>
+                Continue →
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             STEP 4: LUCKY CHARM
+        ========================== -->
+
+        <section class="page" id="step4">
+
+            <div class="big-icon">🍀</div>
+
+            <span class="eyebrow">CHOOSE YOUR COMPANION</span>
+
+            <h2>Pick Your Lucky Charm!</h2>
+
+            <p class="description">
+                Pilih satu simbol yang akan menjadi
+                teman perjalananmu.
+            </p>
+
+            <div class="charm-grid">
+
+                <button class="charm-btn" data-charm="⭐"
+                    data-charm-name="Golden Star">
+
+                    <span>⭐</span>
+                    <strong>Golden Star</strong>
+
+                </button>
+
+                <button class="charm-btn" data-charm="🌙"
+                    data-charm-name="Little Moon">
+
+                    <span>🌙</span>
+                    <strong>Little Moon</strong>
+
+                </button>
+
+                <button class="charm-btn" data-charm="🌷"
+                    data-charm-name="Pink Flower">
+
+                    <span>🌷</span>
+                    <strong>Pink Flower</strong>
+
+                </button>
+
+                <button class="charm-btn" data-charm="🦋"
+                    data-charm-name="Blue Butterfly">
+
+                    <span>🦋</span>
+                    <strong>Blue Butterfly</strong>
+
+                </button>
+
+            </div>
+
+            <p id="charmResponse" class="feedback">
+                Your choice will be remembered.
+            </p>
+
+            <button class="primary-btn" id="charmNextBtn" disabled>
+                Choose This! ✨
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             STEP 5: CATCH THE STARS
+        ========================== -->
+
+        <section class="page" id="step5">
+
+            <div class="big-icon">🌟</div>
+
+            <span class="eyebrow">LEVEL 01 — MINI GAME</span>
+
+            <h2>Catch The Stars!</h2>
+
+            <p class="description">
+                Kumpulkan 6 bintang yang muncul secara acak.
+                Cepat klik sebelum kamu kehilangan kesempatan!
+            </p>
+
+            <div class="game-stats">
+
+                <div class="stat-box">
+                    <small>YOUR SCORE</small>
+                    <strong id="starScore">0 / 6</strong>
+                </div>
+
+                <div class="stat-box">
+                    <small>TIME LEFT</small>
+                    <strong id="starTime">30s</strong>
+                </div>
+
+            </div>
+
+            <div class="star-game-area" id="starGameArea">
+
+                <div class="game-intro" id="starGameIntro">
+
+                    <span>🌠</span>
+
+                    <p>Ready to collect your stars?</p>
+
+                    <button class="small-btn" id="startStarGameBtn">
+                        Start Game
+                    </button>
+
+                </div>
+
+            </div>
+
+            <p id="starFeedback" class="feedback">
+                Collect 6 stars to unlock the next level!
+            </p>
+
+            <button class="primary-btn" id="starNextBtn" disabled>
+                Next Level →
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             STEP 6: MEMORY MATCH
+        ========================== -->
+
+        <section class="page" id="step6">
+
+            <div class="big-icon">🧩</div>
+
+            <span class="eyebrow">LEVEL 02 — MEMORY GAME</span>
+
+            <h2>Find The Matching Pairs!</h2>
+
+            <p class="description">
+                Ada 8 kartu rahasia. Buka dua kartu sekaligus
+                dan temukan empat pasangan yang sama.
+            </p>
+
+            <div class="memory-info">
+
+                <div>
+                    <small>MATCHED PAIRS</small>
+                    <strong id="matchedPairs">0 / 4</strong>
+                </div>
+
+                <div>
+                    <small>ATTEMPTS</small>
+                    <strong id="memoryAttempts">0</strong>
+                </div>
+
+            </div>
+
+            <div class="memory-grid" id="memoryGrid"></div>
+
+            <p id="memoryFeedback" class="feedback">
+                Find all four matching pairs!
+            </p>
+
+            <button class="primary-btn" id="memoryNextBtn" disabled>
+                Continue →
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             STEP 7: QUIZ
+        ========================== -->
+
+        <section class="page" id="step7">
+
+            <div class="big-icon">🧠</div>
+
+            <span class="eyebrow">LEVEL 03 — QUICK QUIZ</span>
+
+            <h2>A Little Question!</h2>
+
+            <p class="description">
+                Saat menghadapi sebuah tantangan,
+                pilihan mana yang paling membantu kita berkembang?
+            </p>
+
+            <div class="quiz-container">
+
+                <button class="quiz-option" data-answer="wrong">
+                    <span>A</span>
+                    Berhenti mencoba ketika gagal.
+                </button>
+
+                <button class="quiz-option" data-answer="correct">
+                    <span>B</span>
+                    Belajar dari kesalahan dan mencoba lagi.
+                </button>
+
+                <button class="quiz-option" data-answer="wrong">
+                    <span>C</span>
+                    Membandingkan perjalanan dengan orang lain.
+                </button>
+
+            </div>
+
+            <p id="quizFeedback" class="feedback"></p>
+
+            <button class="primary-btn" id="quizNextBtn" disabled>
+                Unlock The Gift 🔓
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             STEP 8: MYSTERY GIFTS
+        ========================== -->
+
+        <section class="page" id="step8">
+
+            <div class="big-icon">🎁</div>
+
+            <span class="eyebrow">A LITTLE SURPRISE</span>
+
+            <h2>Three Mystery Gifts!</h2>
+
+            <p class="description">
+                Ada tiga hadiah kecil yang tersembunyi.
+                Klik semuanya untuk menemukan isi kejutan.
+            </p>
+
+            <div class="gift-grid">
+
+                <button class="gift-box" data-gift="0">
+                    <span>🎁</span>
+                    <small>GIFT 01</small>
+                </button>
+
+                <button class="gift-box" data-gift="1">
+                    <span>🎁</span>
+                    <small>GIFT 02</small>
+                </button>
+
+                <button class="gift-box" data-gift="2">
+                    <span>🎁</span>
+                    <small>GIFT 03</small>
+                </button>
+
+            </div>
+
+            <div class="gift-message" id="giftMessage">
+                Your little gifts are waiting...
+            </div>
+
+            <p id="giftCount" class="feedback">
+                0 of 3 gifts opened.
+            </p>
+
+            <button class="primary-btn" id="giftNextBtn" disabled>
+                Open The Secret Letter →
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             STEP 9: ENVELOPE
+        ========================== -->
+
+        <section class="page" id="step9">
+
+            <div class="big-icon">💌</div>
+
+            <span class="eyebrow">ALMOST THERE</span>
+
+            <h2>A Letter Just For You</h2>
+
+            <p class="description">
+                Kamu sudah menyelesaikan seluruh permainan.
+                Sekarang, saatnya membuka surat rahasia.
+            </p>
+
+            <div class="envelope-area">
+
+                <div class="envelope" id="envelope">
+
+                    <div class="envelope-back"></div>
+
+                    <div class="letter-paper">
+                        <span>FOR YOU ♡</span>
+                    </div>
+
+                    <div class="envelope-front"></div>
+
+                    <div class="envelope-flap"></div>
+
+                    <div class="envelope-seal">♥</div>
+
+                </div>
+
+            </div>
+
+            <p id="envelopeFeedback" class="feedback">
+                Tap the envelope to open it.
+            </p>
+
+            <button class="primary-btn" id="letterNextBtn" disabled>
+                Read My Letter 💗
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             STEP 10: SPECIAL MESSAGE
+        ========================== -->
+
+        <section class="page" id="step10">
+
+            <div class="big-icon">💗</div>
+
+            <span class="eyebrow">A SPECIAL MESSAGE</span>
+
+            <h2 id="messageHeading">Dear You...</h2>
+
+            <div class="message-card">
+
+                <div class="message-decoration">✧</div>
+
+                <p id="specialMessage"></p>
+
+                <span class="message-signature">
+                    With warm wishes ♡
+                </span>
+
+            </div>
+
+            <p class="feedback" id="messageFeedback">
+                Take your time and read it slowly.
+            </p>
+
+            <button class="primary-btn" id="heartGardenBtn" disabled>
+                Enter The Heart Garden 💕
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             STEP 11: HEART GARDEN
+        ========================== -->
+
+        <section class="page heart-page" id="step11">
+
+            <div class="big-icon">🌸</div>
+
+            <span class="eyebrow">THE FINAL SURPRISE</span>
+
+            <h2>
+                Welcome to<br>
+                <span class="gradient-text">The Heart Garden</span>
+            </h2>
+
+            <p class="description">
+                Ada banyak hati kecil di sini.
+                Coba klik satu per satu dan lihat apa yang terjadi!
+            </p>
+
+            <div class="heart-counter">
+                <span>💗</span>
+                Hearts collected:
+                <strong id="heartCount">0</strong>
+            </div>
+
+            <div class="heart-garden" id="heartGarden">
+
+                <!-- Hearts are generated using JavaScript -->
+
+                <div class="garden-center">
+                    <span>♡</span>
+                    <small>CLICK THE HEARTS</small>
+                </div>
+
+            </div>
+
+            <p id="heartFeedback" class="feedback">
+                Every little click creates a little surprise.
+            </p>
+
+            <div class="heart-progress">
+                <div id="heartProgressBar"></div>
+            </div>
+
+            <p class="tiny-text">
+                Collect 10 hearts to complete the garden!
+            </p>
+
+            <div class="final-buttons">
+
+                <button class="primary-btn" id="restartBtn">
+                    ↻ Play Again
+                </button>
+
+                <button class="secondary-btn" id="shareBtn">
+                    ↗ Share This Experience
+                </button>
+
+            </div>
+
+            <p class="footer-note">
+                Made with ♡, just for you.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- SOUND BUTTON -->
+    <button class="sound-toggle" id="soundBtn"
+        aria-label="Toggle sound">
+        🔇
+    </button>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
